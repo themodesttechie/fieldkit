@@ -64,6 +64,16 @@ Skills, `/wipe`, and the `/diagnose` skill are cross-platform — they auto-dete
 Put the whole `fieldkit` folder on a USB stick and run `INSTALL.cmd` from there.
 `bootstrap.ps1` still installs Node/Git/Claude via winget (needs internet for downloads only).
 
+## Remote access (Option B — work from your own machine)
+
+If the client machine is reachable, you can tunnel in instead of installing locally.
+`remote/` has one-click Tailscale + SSH setup/teardown — see [`remote/README.md`](remote/README.md).
+- **Setup** (on client): `remote/windows/SSH-SETUP.cmd` or `remote/mac/ssh-setup.command`
+- **Teardown** (before leaving): `remote/windows/SSH-TEARDOWN.cmd` or `remote/mac/ssh-teardown.command`
+
+SSH is a terminal, not a screen — great for CLI fixes, limited for GUI. For desktop-app
+problems use the local install above.
+
 ## Safety
 - Never log into Bitwarden / Gmail / business accounts on a client machine.
 - `/wipe` + `/logout` removes your OAuth token. Treat the machine as untrusted afterwards.
