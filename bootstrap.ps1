@@ -97,7 +97,8 @@ if ($WhatIf) {
     if (Test-Path $skillsSrc) { Copy-Item "$skillsSrc\*" $skillsDst -Recurse -Force; Ok "skills copied" }
     if (Test-Path $cmdSrc)    { Copy-Item "$cmdSrc\*"    $cmdDst    -Recurse -Force; Ok "/wipe command copied" }
     # place cleanup script where the /wipe command expects it
-    $cleanupSrc = Join-Path $repo 'cleanup.ps1'
+    $cleanupSrc = Join-Path $repo 'uninstall-and-logout.ps1'
+    if (-not (Test-Path $cleanupSrc)) { $cleanupSrc = Join-Path $repo 'cleanup.ps1' }
     if (Test-Path $cleanupSrc) { Copy-Item $cleanupSrc (Join-Path $claudeHome 'fieldkit-cleanup.ps1') -Force; Ok "cleanup script staged for /wipe" }
 }
 

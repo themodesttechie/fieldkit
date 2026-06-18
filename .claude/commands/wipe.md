@@ -1,19 +1,21 @@
 ---
-description: Wipe Claude Code creds + history off this machine, then log out
+description: Wipe Claude creds + history, uninstall, and sign out of Google/Claude in the browser
 ---
 
 You are finishing a temporary support session on someone else's computer. Do this exactly:
 
-1. Run the cleanup script to remove all Claude credentials, session history, MCP config, and copied skills:
+1. Run the cleanup script (removes Claude credentials/history, uninstalls Claude Code, and opens browser logout pages for Google + Claude):
    ```powershell
    powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.claude\fieldkit-cleanup.ps1"
    ```
-   If that path is missing, fall back to the repo copy at `.\cleanup.ps1`, and if that is also missing, remove these directly:
+   If that path is missing, fall back to the repo copy `.\uninstall-and-logout.ps1`, then `.\cleanup.ps1`. If all are missing, remove directly:
    - `$env:USERPROFILE\.claude`
    - `$env:USERPROFILE\.claude.json`
+   and open `https://accounts.google.com/Logout` and `https://claude.ai/logout` in the default browser.
 
-2. Tell the user the credentials are wiped and that they must now run the built-in **`/logout`** command themselves (a custom command cannot invoke the built-in logout), then close Claude.
-
-3. Remind them to delete the cloned `fieldkit` folder if it is still on disk.
+2. Tell the user to:
+   - confirm in the browser they are **signed out of Google** (their themodesttechie account) and Claude,
+   - run the built-in **`/logout`** command themselves (a custom command cannot invoke built-in logout),
+   - close Claude and delete the cloned `fieldkit` folder.
 
 Keep output short. Confirm each step done or skipped.
