@@ -35,6 +35,31 @@ cd fieldkit
 4. **When done, inside Claude run `/wipe`, then `/logout`.**
 5. Delete the `fieldkit` folder.
 
+## macOS
+
+Mac equivalents live in `mac/`:
+| File | Does |
+|------|------|
+| `mac/install.command` | **One-click installer.** Double-click → installs Homebrew + Node + Git + Claude Code + apps + skills. |
+| `mac/bootstrap.sh` | The installer (called by install.command). `--no-apps` to skip app installs. |
+| `mac/uninstall.command` | **One-click cleanup.** Uninstall + wipe creds + sign out of Google/Claude in browser. |
+| `mac/uninstall-and-logout.sh` | The cleanup script. |
+| `mac/scripts/diagnose.sh` | macOS health report. |
+
+```bash
+git clone https://github.com/themodesttechie/fieldkit
+cd fieldkit/mac
+# double-click install.command, or:
+bash bootstrap.sh
+# ... work ... then:  double-click uninstall.command  (or bash uninstall-and-logout.sh)
+```
+
+**Gatekeeper:** macOS may block `.command` files from the internet/email. Either right-click → **Open** the first time, or clear the quarantine flag:
+```bash
+xattr -dr com.apple.quarantine /path/to/fieldkit
+```
+Skills, `/wipe`, and the `/diagnose` skill are cross-platform — they auto-detect Windows vs macOS.
+
 ## No internet / no git on their machine?
 Put the whole `fieldkit` folder on a USB stick and run `INSTALL.cmd` from there.
 `bootstrap.ps1` still installs Node/Git/Claude via winget (needs internet for downloads only).

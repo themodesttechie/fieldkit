@@ -8,11 +8,18 @@ description: Run a full health check on a Windows laptop (disk, RAM, battery, st
 When invoked, run the read-only health-check script and interpret the results for a non-technical owner.
 
 ## Steps
-1. Run the diagnostic (it changes nothing):
+1. Detect the OS and run the matching diagnostic (it changes nothing). Locate the script under the cloned `fieldkit` folder.
+
+   **Windows** — run `fieldkit\scripts\diagnose.ps1`:
    ```powershell
-   powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.claude\skills\diagnose\..\..\..\fieldkit\scripts\diagnose.ps1"
+   powershell -NoProfile -ExecutionPolicy Bypass -File "<path>\fieldkit\scripts\diagnose.ps1"
    ```
-   If that path does not resolve, locate `diagnose.ps1` under the cloned `fieldkit\scripts\` folder and run it. Pass `-OutFile "$env:USERPROFILE\Desktop\health-report.txt"` to also save a copy.
+   Add `-OutFile "$env:USERPROFILE\Desktop\health-report.txt"` to also save a copy.
+
+   **macOS / Linux** — run `fieldkit/mac/scripts/diagnose.sh`:
+   ```bash
+   bash "<path>/fieldkit/mac/scripts/diagnose.sh" ~/Desktop/health-report.txt
+   ```
 
 2. Read the output and summarize for the owner:
    - Flag low disk (<10% free), low RAM headroom, lots of startup programs, no internet, or many pending updates.
