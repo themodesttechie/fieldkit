@@ -24,11 +24,26 @@ Portable tech-support kit for setting up / fixing someone else's Windows machine
 Only reputable, secret-free skills are bundled. Random public-repo skills are **not** added — a skill is instructions Claude executes, so an untrusted one is a prompt-injection / supply-chain risk on a client machine.
 
 ## Use it on a client machine
+
+**No git on the machine? (most likely on a fresh laptop)** — use the one-liner. It uses
+only built-in tools (no git, no curl needed on Windows) to download + extract + launch:
+
+Windows (paste into PowerShell):
+```powershell
+irm https://raw.githubusercontent.com/themodesttechie/fieldkit/main/get.ps1 | iex
+```
+macOS (paste into Terminal — curl is built in):
+```bash
+curl -fsSL https://raw.githubusercontent.com/themodesttechie/fieldkit/main/get.sh | bash
+```
+
+**If git is available**, or from a USB stick:
 ```powershell
 git clone https://github.com/themodesttechie/fieldkit
 cd fieldkit
-# or just double-click INSTALL.cmd from a USB stick
+# or just double-click INSTALL.cmd from the copied folder
 ```
+(`bootstrap` installs Git anyway as part of the essentials, so you'll have it afterwards.)
 1. Run `INSTALL.cmd` (one click, elevates to admin).
 2. Run `claude`, log in with your Claude account.
 3. Do the work (use `/diagnose` skill, run scripts, etc).
