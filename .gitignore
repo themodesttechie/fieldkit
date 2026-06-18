@@ -1,0 +1,7 @@
+# nothing secret should ever live here, but be safe:
+*.env
+*.key
+*.pem
+*secret*
+*token*
+health-report.txt
