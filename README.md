@@ -12,7 +12,16 @@ Portable tech-support kit for setting up / fixing someone else's Windows machine
 | `scripts/diagnose.ps1` | Read-only laptop health report (disk/RAM/battery/startup/network/updates). |
 | `scripts/debloat.ps1` | Removes Win11 junk apps. `-WhatIf` to preview first. |
 | `skills/diagnose/` | Claude skill that runs + explains the health check for a non-technical owner. |
+| `skills/markitdown/` | Convert PDF/Word/PPT/Excel/images/HTML → clean Markdown (Microsoft tool). |
+| `skills/docx`, `pdf`, `pptx`, `xlsx` | Create + edit Office documents (from anthropics/skills, official). |
 | `.claude/commands/wipe.md` | The `/wipe` slash command — one command to clean everything at the end. |
+
+### Where the bundled skills came from
+- `diagnose` — built for this kit.
+- `markitdown` — copied from local install (Microsoft MarkItDown CLI wrapper).
+- `docx` / `pdf` / `pptx` / `xlsx` — official [anthropics/skills](https://github.com/anthropics/skills) (vetted, no third-party code).
+
+Only reputable, secret-free skills are bundled. Random public-repo skills are **not** added — a skill is instructions Claude executes, so an untrusted one is a prompt-injection / supply-chain risk on a client machine.
 
 ## Use it on a client machine
 ```powershell
